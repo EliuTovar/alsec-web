@@ -3,10 +3,524 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Almenara | Alsec</title>
+    <title>Almenara Seguridad | Tu tranquilidad no se negocia</title>
+    <!-- FontAwesome para Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0B3058;     /* Azul Marino Oficial */
+            --accent: #C5A059;      /* Dorado Oficial */
+            --dark: #111827;
+            --light: #F8FAFC;
+            --gray: #64748B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            color: var(--dark);
+            background-color: #FFFFFF;
+            line-height: 1.6;
+        }
+
+        /* Header & Nav */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            z-index: 1000;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo img {
+            height: 55px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .btn-contact {
+            background: var(--primary);
+            color: white !important;
+            padding: 0.6rem 1.4rem;
+            border-radius: 6px;
+            transition: background 0.3s !important;
+        }
+
+        .btn-contact:hover {
+            background: var(--accent) !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(11, 48, 88, 0.95), rgba(11, 48, 88, 0.8)), url('https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1920&q=80') center/cover;
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            background: rgba(197, 160, 89, 0.2);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #E2E8F0;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            padding: 0.9rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: #b08d49;
+            transform: translateY(-2px);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--light);
+            padding: 3rem 2rem;
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .stat-item p {
+            color: var(--gray);
+            font-weight: 600;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: var(--gray);
+        }
+
+        .about-highlight {
+            border-left: 4px solid var(--accent);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .about-card {
+            background: var(--primary);
+            color: white;
+            padding: 3rem;
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(11, 48, 88, 0.2);
+        }
+
+        .about-card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--light);
+            padding: 5rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3.5rem auto;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--gray);
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem 1.8rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--primary);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-top-color: var(--accent);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1.2rem;
+        }
+
+        .service-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .service-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            background: white;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .contact-info {
+            background: var(--primary);
+            color: white;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-info h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-item i {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .contact-form {
+            padding: 3rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #CBD5E1;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 3px solid var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .about { grid-template-columns: 1fr; }
+            .contact-container { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
 </head>
 <body>
-    <h1>Bienvenido a Almenara (alsec.mx)</h1>
-    <p>Nuestra página web está en construcción. Muy pronto podrás ver nuestro sitio completo aquí.</p>
+
+    <!-- Header / Navegación -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <img src="images/logo.png" alt="Almenara Seguridad Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#contacto" class="btn-contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero / Portada Principal -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <span class="hero-badge"><i class="fa-solid fa-shield-halved"></i> Empresa Orgullosamente Chihuahuense</span>
+            <h1>Tu tranquilidad no se negocia, la construimos todos los días</h1>
+            <p>Más de 10 años de experiencia brindando protección y orden integral a empresas, industrias y dependencias públicas en todo el estado de Chihuahua.</p>
+            <div class="hero-btns">
+                <a href="#contacto" class="btn-primary">Cotizar Servicio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estadísticas -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <h3>+10</h3>
+                <p>Años de Experiencia</p>
+            </div>
+            <div class="stat-item">
+                <h3>+300</h3>
+                <p>Elementos Capacitados</p>
+            </div>
+            <div class="stat-item">
+                <h3>+15</h3>
+                <p>Clientes Satisfechos</p>
+            </div>
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Cobertura Estatal</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nosotros -->
+    <section class="about" id="nosotros">
+        <div class="about-text">
+            <h2>Sobre Almenara Seguridad</h2>
+            <p>Somos una empresa especializada en seguridad privada dedicada a mantener la tranquilidad y el orden operacional de nuestros clientes.</p>
+            <p>Nos destacamos por ser una institución centrada en la profesionalidad, la integridad y el desarrollo constante y bienestar de todo nuestro personal activo.</p>
+            <div class="about-highlight">
+                "Presencia estratégica y confiable en todo el Estado de Chihuahua."
+            </div>
+        </div>
+        <div class="about-card">
+            <h3>Compromiso Institucional</h3>
+            <p>Ajustamos cada esquema de protección a las necesidades físicas, digitales y operacionales de nuestros clientes, garantizando una respuesta inmediata y efectiva.</p>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section class="services" id="servicios">
+        <div class="section-header">
+            <h2>Nuestros Servicios</h2>
+            <p>Soluciones de vigilancia integrales diseñadas para el sector industrial, comercial y gubernamental.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fa-solid fa-industry service-icon"></i>
+                <h3>Seguridad Industrial</h3>
+                <p>Protección especializada para parques y naves industriales, atendiendo la industria nacional y maquiladora con protocolos rigurosos.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-building-user service-icon"></i>
+                <h3>Iniciativa Privada</h3>
+                <p>Vigilancia en centros comerciales, oficinas, desarrollos residenciales, hoteles y custodia operativa de bodegas.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-landmark service-icon"></i>
+                <h3>Servicios al Gobierno</h3>
+                <p>Vigilancia y custodia para dependencias públicas con elementos altamente capacitados y con licencias oficiales vigentes.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-shield-cat service-icon"></i>
+                <h3>Seguridad Corporativa</h3>
+                <p>Estrategias avanzadas de control de acceso, resguardo de activos y protección patrimonial para edificios corporativos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="contact" id="contacto">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Contáctanos</h2>
+                <p style="margin-bottom: 2rem; color: #E2E8F0;">Estamos listos para atender las necesidades de protección de tu empresa o institución.</p>
+                <div class="info-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                        <strong>Teléfono:</strong><br>
+                        614 764 1470
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div>
+                        <strong>Correo Electrónico:</strong><br>
+                        info@alsec.mx
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <strong>Dirección:</strong><br>
+                        Francisco Xavier Mina 1000, Col. Centro<br>C.P. 31000, Chihuahua, Chih.
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label>Nombre Completo</label>
+                        <input type="text" placeholder="Tu nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Correo Electrónico</label>
+                        <input type="email" placeholder="correo@empresa.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mensaje / Requerimiento</label>
+                        <textarea rows="4" placeholder="¿En qué servicio estás interesado?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%; border: none; cursor: pointer;">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Almenara Seguridad (alsec.mx) - Todos los derechos reservados.</p>
+    </footer>
+
 </body>
 </html>
