@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Almenara Seguridad | Tu tranquilidad no se negocia</title>
+    <title>Almenara Seguridad</title>
+    <!-- Favicon / Icono de Pestaña -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <!-- FontAwesome para Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
@@ -66,6 +68,7 @@
         .logo img {
             height: 55px;
             width: auto;
+            cursor: pointer;
         }
 
         .nav-links {
@@ -80,6 +83,7 @@
             font-weight: 600;
             font-size: 0.95rem;
             transition: color 0.3s;
+            cursor: pointer;
         }
 
         .nav-links a:hover {
@@ -152,6 +156,7 @@
             text-decoration: none;
             font-weight: 700;
             transition: transform 0.2s, background 0.3s;
+            cursor: pointer;
         }
 
         .btn-primary:hover {
@@ -387,14 +392,14 @@
     <!-- Header / Navegación -->
     <header>
         <nav class="navbar">
-            <a href="#" class="logo">
+            <a href="javascript:void(0)" onclick="scrollToSection('inicio')" class="logo">
                 <img src="images/logo.png" alt="Almenara Seguridad Logo">
             </a>
             <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#contacto" class="btn-contact">Contacto</a></li>
+                <li><a href="javascript:void(0)" onclick="scrollToSection('inicio')">Inicio</a></li>
+                <li><a href="javascript:void(0)" onclick="scrollToSection('nosotros')">Nosotros</a></li>
+                <li><a href="javascript:void(0)" onclick="scrollToSection('servicios')">Servicios</a></li>
+                <li><a href="javascript:void(0)" onclick="scrollToSection('contacto')" class="btn-contact">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -406,7 +411,7 @@
             <h1>Tu tranquilidad no se negocia, la construimos todos los días</h1>
             <p>Más de 10 años de experiencia brindando protección y orden integral a empresas, industrias y dependencias públicas en todo el estado de Chihuahua.</p>
             <div class="hero-btns">
-                <a href="#contacto" class="btn-primary">Cotizar Servicio</a>
+                <a href="javascript:void(0)" onclick="scrollToSection('contacto')" class="btn-primary">Cotizar Servicio</a>
             </div>
         </div>
     </section>
@@ -531,6 +536,16 @@
     <footer>
         <p>&copy; 2026 Almenara Seguridad (alsec.mx) - Todos los derechos reservados.</p>
     </footer>
+
+    <!-- Script para Desplazamiento Limpio sin modificar la URL -->
+    <script>
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
 
 </body>
 </html>
