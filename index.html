@@ -369,6 +369,17 @@
             border-color: var(--primary);
         }
 
+        .btn-whatsapp {
+            background-color: #25D366 !important;
+            color: white !important;
+            transition: background-color 0.3s, transform 0.2s !important;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1eb854 !important;
+            transform: translateY(-2px);
+        }
+
         /* Footer */
         footer {
             background: var(--dark);
@@ -474,7 +485,7 @@
             <div class="service-card">
                 <i class="fa-solid fa-landmark service-icon"></i>
                 <h3>Servicios al Gobierno</h3>
-                <p>Vigilancia y custodia para dependencias públicas con elementos altamente capacitados y con licencias oficiales vigentes.</p>
+                <p>Vigilancia y custodia para dependencias públicas con elementos highly capacitados y con licencias oficiales vigentes.</p>
             </div>
             <div class="service-card">
                 <i class="fa-solid fa-shield-cat service-icon"></i>
@@ -484,7 +495,7 @@
         </div>
     </section>
 
-    <!-- Contacto -->
+    <!-- Contacto con integración de WhatsApp -->
     <section class="contact" id="contacto">
         <div class="contact-container">
             <div class="contact-info">
@@ -513,21 +524,21 @@
                 </div>
             </div>
             <div class="contact-form">
-                <form action="#" method="POST">
-                    <div class="form-group">
-                        <label>Nombre Completo</label>
-                        <input type="text" placeholder="Tu nombre" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Correo Electrónico</label>
-                        <input type="email" placeholder="correo@empresa.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Mensaje / Requerimiento</label>
-                        <textarea rows="4" placeholder="¿En qué servicio estás interesado?" required></textarea>
-                    </div>
-                    <button type="submit" class="btn-primary" style="width: 100%; border: none; cursor: pointer;">Enviar Mensaje</button>
-                </form>
+                <div class="form-group">
+                    <label>Nombre Completo</label>
+                    <input type="text" id="wa_name" placeholder="Tu nombre" required>
+                </div>
+                <div class="form-group">
+                    <label>Correo Electrónico</label>
+                    <input type="email" id="wa_email" placeholder="correo@empresa.com">
+                </div>
+                <div class="form-group">
+                    <label>Mensaje / Requerimiento</label>
+                    <textarea id="wa_message" rows="4" placeholder="¿En qué servicio estás interesado?" required></textarea>
+                </div>
+                <button type="button" onclick="sendToWhatsApp()" class="btn-primary btn-whatsapp" style="width: 100%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                    <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> Enviar por WhatsApp
+                </button>
             </div>
         </div>
     </section>
@@ -537,13 +548,34 @@
         <p>&copy; 2026 Almenara Seguridad (alsec.mx) - Todos los derechos reservados.</p>
     </footer>
 
-    <!-- Script para Desplazamiento Limpio sin modificar la URL -->
+    <!-- Scripts de Funcionalidad -->
     <script>
+        // Función para desplazamiento limpio sin fragmento # en la URL
         function scrollToSection(sectionId) {
             const section = document.getElementById(sectionId);
             if (section) {
                 section.scrollIntoView({ behavior: 'smooth' });
             }
+        }
+
+        // Función para enviar datos directamente al WhatsApp de Almenara
+        function sendToWhatsApp() {
+            const phone = "526147641470";
+            const name = document.getElementById("wa_name").value.trim();
+            const email = document.getElementById("wa_email").value.trim();
+            const message = document.getElementById("wa_message").value.trim();
+
+            if (!name || !message) {
+                alert("Por favor, ingresa tu nombre y el mensaje antes de enviar.");
+                return;
+            }
+
+            const text = `Hola, mi nombre es *${name}*.\n` +
+                         (email ? `Correo: ${email}\n` : '') +
+                         `*Requerimiento:* ${message}`;
+
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
         }
     </script>
 
