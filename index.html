@@ -433,7 +433,7 @@
             transform: translateY(-2px);
         }
 
-        /* 4. SECCIÓN RECLUTAMIENTO (CON DESPLEGABLE / COLLAPSIBLE) */
+        /* 4. SECCIÓN RECLUTAMIENTO (CON DESPLEGABLE) */
         .careers {
             padding: 4rem 2rem;
             background: var(--light);
@@ -480,7 +480,6 @@
             transform: rotate(180deg);
         }
 
-        /* Contenedor del Formulario Colapsable */
         .careers-collapsible {
             max-height: 0;
             overflow: hidden;
@@ -491,14 +490,13 @@
         }
 
         .careers-collapsible.open {
-            max-height: 2000px; /* Suficiente alto para mostrar el formulario */
+            max-height: 2000px;
             opacity: 1;
             margin-top: 2rem;
             border-top: 1px solid #E2E8F0;
             padding-top: 2rem;
         }
 
-        /* Estructura de 1 sola columna vertical hacia abajo */
         .single-column-form {
             display: flex;
             flex-direction: column;
@@ -515,7 +513,6 @@
             border-bottom: 1px dashed #E2E8F0;
         }
 
-        /* File Upload Moderno con Marco Punteado */
         .file-upload-wrapper {
             position: relative;
             border: 2px dashed #CBD5E1;
@@ -539,6 +536,14 @@
             cursor: pointer;
             width: 100%;
             height: 100%;
+        }
+
+        /* Botones de Envío Doble para Reclutadores */
+        .recruitment-btns-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
 
         /* 5. Sobre Almenara Seguridad (Al final) */
@@ -602,6 +607,7 @@
             .about { grid-template-columns: 1fr; }
             .contact-container { grid-template-columns: 1fr; }
             .careers-container { padding: 2rem 1.2rem; }
+            .recruitment-btns-container { grid-template-columns: 1fr; }
             .nav-links { display: none; }
             .carousel-btn { width: 40px; height: 40px; }
             .prev-btn { left: 5px; }
@@ -789,7 +795,7 @@
         </div>
     </section>
 
-    <!-- 4. SECCIÓN RECLUTAMIENTO Y BOLSA DE TRABAJO (CON BOTÓN DE DESPLIEGUE) -->
+    <!-- 4. SECCIÓN RECLUTAMIENTO Y BOLSA DE TRABAJO (CON BOTONES PARA LOS 2 NÚMEROS) -->
     <section class="careers" id="empleo">
         <div class="careers-container">
             <div class="section-header" style="margin-bottom: 1rem;">
@@ -839,9 +845,10 @@
                         <label><i class="fa-solid fa-graduation-cap" style="color: var(--accent);"></i> Escolaridad *</label>
                         <select id="job_education" required>
                             <option value="" disabled selected>Selecciona tu nivel de estudios</option>
-                            <option value="Secundaria Completa">Secundaria Completa</option>
-                            <option value="Preparatoria / Bachillerato">Preparatoria / Bachillerato</option>
-                            <option value="Licenciatura / Trunca">Licenciatura / Trunca</option>
+                            <option value="Pirmaria">Primaria</option>
+                            <option value="Secundaria">Secundaria</option>
+                            <option value="Preparatoria">Preparatoria</option>
+                            <option value="Licenciatura">Licenciatura</option>
                         </select>
                     </div>
 
@@ -850,19 +857,19 @@
                         <textarea id="job_experience" rows="3" placeholder="Detalla si has sido guardia anteriormente, empresas o años en el ramo..." required></textarea>
                     </div>
 
-                    <div class="form-group">
-                        <label><i class="fa-solid fa-file-pdf" style="color: var(--accent);"></i> Adjuntar CV o Solicitud de Empleo (Opcional)</label>
-                        <div class="file-upload-wrapper">
-                            <i class="fa-solid fa-cloud-arrow-up" style="font-size: 1.8rem; color: var(--accent); margin-bottom: 0.3rem;"></i>
-                            <p style="font-size: 0.95rem; font-weight: 700; color: var(--primary);" id="fileNameText">Haz clic para adjuntar tu archivo</p>
-                            <span style="font-size: 0.8rem; color: var(--gray);">Formato PDF, DOC, JPG o PNG</span>
-                            <input type="file" id="job_file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" onchange="updateFileName(this)">
-                        </div>
-                    </div>
+                    <label style="font-weight: 700; color: var(--primary); margin-top: 1rem; font-size: 0.95rem; display: block;">
+                        Selecciona un reclutador para enviar tu postulación:
+                    </label>
 
-                    <button type="button" onclick="sendJobApplication()" class="btn-primary btn-whatsapp" style="width: 100%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.6rem; margin-top: 1.2rem; padding: 1.1rem; border-radius: 8px; font-size: 1.05rem;">
-                        <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i> Enviar Postulación por WhatsApp
-                    </button>
+                    <!-- Botones dobles directos a reclutadores -->
+                    <div class="recruitment-btns-container">
+                        <button type="button" onclick="sendJobApplication('526142291218')" class="btn-primary btn-whatsapp" style="border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 1rem; border-radius: 8px; font-size: 0.95rem;">
+                            <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> Reclutamiento 1
+                        </button>
+                        <button type="button" onclick="sendJobApplication('526144053980')" class="btn-primary btn-whatsapp" style="border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 1rem; border-radius: 8px; font-size: 0.95rem; background-color: #128C7E !important;">
+                            <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> Reclutamiento 2
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -929,7 +936,7 @@
             }
         }
 
-        // Envío de Cotización por WhatsApp
+        // Envío de Cotización por WhatsApp (Al número de atención comercial)
         function sendToWhatsApp() {
             const phone = "526147641470";
             const name = document.getElementById("wa_name").value.trim();
@@ -949,9 +956,8 @@
             window.open(url, '_blank');
         }
 
-        // Envío de Postulación por WhatsApp
-        function sendJobApplication() {
-            const phone = "526147641470";
+        // Envío de Postulación por WhatsApp al número de Reclutamiento seleccionado
+        function sendJobApplication(targetPhone) {
             const name = document.getElementById("job_name").value.trim();
             const age = document.getElementById("job_age").value.trim();
             const jobPhone = document.getElementById("job_phone").value.trim();
@@ -965,17 +971,17 @@
                 return;
             }
 
-            const text = `📋 *NUEVA POSTULACIÓN PARA GUARDIA DE SEGURIDAD*\n\n` +
-                         `👤 *Nombre:* ${name}\n` +
-                         `🎂 *Edad:* ${age} años\n` +
-                         `📞 *Teléfono:* ${jobPhone}\n` +
-                         `📍 *Ubicación:* ${location}\n` +
-                         `🎓 *Escolaridad:* ${education}\n` +
-                         (email ? `✉️ *Correo:* ${email}\n` : '') +
-                         `💼 *Experiencia:* ${experience}\n\n` +
+            const text = `*NUEVA POSTULACIÓN PARA GUARDIA DE SEGURIDAD*\n\n` +
+                         `*Nombre:* ${name}\n` +
+                         `*Edad:* ${age} años\n` +
+                         `*Teléfono:* ${jobPhone}\n` +
+                         `*Ubicación:* ${location}\n` +
+                         `*Escolaridad:* ${education}\n` +
+                         (email ? `*Correo:* ${email}\n` : '') +
+                         `*Experiencia:* ${experience}\n\n` +
                          `_Solicitud enviada desde alsec.mx_`;
 
-            const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+            const url = `https://wa.me/${targetPhone}?text=${encodeURIComponent(text)}`;
             window.open(url, '_blank');
         }
 
