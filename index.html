@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Almenara Seguridad | Bolsa de Trabajo y Cotizaciones</title>
+    <title>Almenara Seguridad</title>
     <!-- Favicon / Icono de Pestaña -->
     <link rel="icon" type="image/png" href="images/favicon.png">
     <!-- FontAwesome para Iconos -->
@@ -293,7 +293,6 @@
             margin-bottom: 1rem;
         }
 
-        /* Botones laterales del carrusel */
         .carousel-btn {
             position: absolute;
             top: 50%;
@@ -322,7 +321,6 @@
         .prev-btn { left: -22px; }
         .next-btn { right: -22px; }
 
-        /* Puntos Indicadores */
         .carousel-dots {
             text-align: center;
             margin-top: 1.5rem;
@@ -396,7 +394,7 @@
         }
 
         .form-group {
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.4rem;
         }
 
         .form-group label {
@@ -404,18 +402,24 @@
             margin-bottom: 0.4rem;
             font-weight: 600;
             color: var(--primary);
+            font-size: 0.95rem;
         }
 
         .form-group input, .form-group textarea, .form-group select {
             width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #CBD5E1;
-            border-radius: 6px;
+            padding: 0.9rem 1rem;
+            border: 1.5px solid #E2E8F0;
+            border-radius: 8px;
             outline: none;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            background-color: #FAFCFF;
         }
 
         .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
             border-color: var(--primary);
+            background-color: #FFFFFF;
+            box-shadow: 0 0 0 4px rgba(11, 48, 88, 0.08);
         }
 
         .btn-whatsapp {
@@ -429,26 +433,112 @@
             transform: translateY(-2px);
         }
 
-        /* 4. NUEVA SECCIÓN: RECLUTAMIENTO / BOLSA DE TRABAJO */
+        /* 4. SECCIÓN RECLUTAMIENTO (CON DESPLEGABLE / COLLAPSIBLE) */
         .careers {
-            padding: 5rem 2rem;
-            background: #FFFFFF;
+            padding: 4rem 2rem;
+            background: var(--light);
         }
 
         .careers-container {
-            max-width: 1000px;
+            max-width: 750px;
             margin: 0 auto;
             background: white;
-            box-shadow: 0 10px 40px rgba(11, 48, 88, 0.1);
-            border-radius: 12px;
+            box-shadow: 0 10px 35px rgba(11, 48, 88, 0.07);
+            border-radius: 16px;
             border-top: 5px solid var(--accent);
-            padding: 3.5rem 2.5rem;
+            padding: 2.5rem;
+            text-align: center;
         }
 
-        .form-grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
+        .careers-trigger-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(11, 48, 88, 0.2);
+            margin-top: 0.5rem;
+        }
+
+        .careers-trigger-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .careers-trigger-btn i.fa-chevron-down {
+            transition: transform 0.3s ease;
+        }
+
+        .careers-trigger-btn.active i.fa-chevron-down {
+            transform: rotate(180deg);
+        }
+
+        /* Contenedor del Formulario Colapsable */
+        .careers-collapsible {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, opacity 0.4s ease, margin-top 0.4s ease;
+            opacity: 0;
+            text-align: left;
+            margin-top: 0;
+        }
+
+        .careers-collapsible.open {
+            max-height: 2000px; /* Suficiente alto para mostrar el formulario */
+            opacity: 1;
+            margin-top: 2rem;
+            border-top: 1px solid #E2E8F0;
+            padding-top: 2rem;
+        }
+
+        /* Estructura de 1 sola columna vertical hacia abajo */
+        .single-column-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-section-divider {
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            margin: 1.2rem 0 1rem 0;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px dashed #E2E8F0;
+        }
+
+        /* File Upload Moderno con Marco Punteado */
+        .file-upload-wrapper {
+            position: relative;
+            border: 2px dashed #CBD5E1;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            background: #FAFCFF;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .file-upload-wrapper:hover {
+            border-color: var(--accent);
+            background: #F8FAFC;
+        }
+
+        .file-upload-wrapper input[type="file"] {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
         }
 
         /* 5. Sobre Almenara Seguridad (Al final) */
@@ -511,7 +601,7 @@
             .hero h1 { font-size: 2.2rem; }
             .about { grid-template-columns: 1fr; }
             .contact-container { grid-template-columns: 1fr; }
-            .form-grid-2 { grid-template-columns: 1fr; }
+            .careers-container { padding: 2rem 1.2rem; }
             .nav-links { display: none; }
             .carousel-btn { width: 40px; height: 40px; }
             .prev-btn { left: 5px; }
@@ -533,7 +623,7 @@
                 <li><a href="javascript:void(0)" onclick="scrollToSection('inicio')">Inicio</a></li>
                 <li><a href="javascript:void(0)" onclick="scrollToSection('servicios')">Servicios</a></li>
                 <li><a href="javascript:void(0)" onclick="scrollToSection('contacto')" class="btn-contact">Cotizar Servicio</a></li>
-                <li><a href="javascript:void(0)" onclick="scrollToSection('empleo')"><i class="fa-solid fa-user-check"></i> Trabaja con Nosotros</a></li>
+                <li><a href="javascript:void(0)" onclick="toggleJobForm(true)"><i class="fa-solid fa-user-check"></i> Trabaja con Nosotros</a></li>
                 <li><a href="javascript:void(0)" onclick="scrollToSection('nosotros')">Nosotros</a></li>
             </ul>
         </nav>
@@ -547,7 +637,7 @@
             <p>Más de 10 años de experiencia brindando protección y orden integral a empresas, industrias y dependencias públicas en todo el estado de Chihuahua.</p>
             <div class="hero-btns">
                 <a href="javascript:void(0)" onclick="scrollToSection('contacto')" class="btn-primary">Cotizar Servicio</a>
-                <a href="javascript:void(0)" onclick="scrollToSection('empleo')" class="btn-secondary"><i class="fa-solid fa-id-card"></i> Trabaja con Nosotros</a>
+                <a href="javascript:void(0)" onclick="toggleJobForm(true)" class="btn-secondary"><i class="fa-solid fa-id-card"></i> Trabaja con Nosotros</a>
             </div>
         </div>
     </section>
@@ -699,69 +789,82 @@
         </div>
     </section>
 
-    <!-- 4. SECCIÓN DE CONTRATACIÓN Y BOLSA DE TRABAJO -->
+    <!-- 4. SECCIÓN RECLUTAMIENTO Y BOLSA DE TRABAJO (CON BOTÓN DE DESPLIEGUE) -->
     <section class="careers" id="empleo">
         <div class="careers-container">
-            <div class="section-header" style="margin-bottom: 2.5rem;">
+            <div class="section-header" style="margin-bottom: 1rem;">
                 <h2>Únete a Nuestro Equipo de Guardias</h2>
-                <p>En Almenara Seguridad buscamos personal comprometido. Completa tus datos para iniciar tu proceso de selección.</p>
+                <p>En Almenara Seguridad buscamos personal comprometido. Da clic abajo para abrir la ficha de postulación.</p>
             </div>
 
-            <form id="jobForm">
-                <div class="form-grid-2">
+            <!-- Botón Desplegable -->
+            <button type="button" class="careers-trigger-btn" id="jobToggleBtn" onclick="toggleJobForm()">
+                <i class="fa-solid fa-id-card"></i> <span id="toggleBtnText">Llenar Ficha de Postulación</span> <i class="fa-solid fa-chevron-down"></i>
+            </button>
+
+            <!-- Formulario Oculto/Desplegable -->
+            <div class="careers-collapsible" id="jobCollapsible">
+                <form id="jobForm" class="single-column-form">
+                    
+                    <div class="form-section-divider">1. DATOS PERSONALES</div>
+
                     <div class="form-group">
-                        <label><i class="fa-solid fa-user"></i> Nombre Completo *</label>
-                        <input type="text" id="job_name" placeholder="Tu nombre completo" required>
+                        <label><i class="fa-solid fa-user" style="color: var(--accent);"></i> Nombre Completo *</label>
+                        <input type="text" id="job_name" placeholder="Ej. Juan Pérez López" required>
                     </div>
 
                     <div class="form-group">
-                        <label><i class="fa-solid fa-cake-candles"></i> Edad *</label>
-                        <input type="number" id="job_age" placeholder="Ej. 30" min="18" max="65" required>
+                        <label><i class="fa-solid fa-cake-candles" style="color: var(--accent);"></i> Edad *</label>
+                        <input type="number" id="job_age" placeholder="Ej. 32" min="18" max="65" required>
                     </div>
 
                     <div class="form-group">
-                        <label><i class="fa-solid fa-phone"></i> Número de Teléfono *</label>
+                        <label><i class="fa-solid fa-phone" style="color: var(--accent);"></i> Número de Teléfono *</label>
                         <input type="tel" id="job_phone" placeholder="6141234567" required>
                     </div>
 
                     <div class="form-group">
-                        <label><i class="fa-solid fa-location-dot"></i> Ubicación / Colonia *</label>
+                        <label><i class="fa-solid fa-location-dot" style="color: var(--accent);"></i> Ubicación / Colonia *</label>
                         <input type="text" id="job_location" placeholder="Colonia o municipio en Chihuahua" required>
                     </div>
 
                     <div class="form-group">
-                        <label><i class="fa-solid fa-envelope"></i> Correo Electrónico</label>
+                        <label><i class="fa-solid fa-envelope" style="color: var(--accent);"></i> Correo Electrónico (Opcional)</label>
                         <input type="email" id="job_email" placeholder="correo@ejemplo.com">
                     </div>
 
+                    <div class="form-section-divider">2. PERFIL LABORAL</div>
+
                     <div class="form-group">
-                        <label><i class="fa-solid fa-graduation-cap"></i> Escolaridad *</label>
+                        <label><i class="fa-solid fa-graduation-cap" style="color: var(--accent);"></i> Escolaridad *</label>
                         <select id="job_education" required>
-                            <option value="" disabled selected>Selecciona una opción</option>
-                            <option value="Secundaria Completa">Secundaria</option>
-                            <option value="Preparatoria / Bachillerato">Preparatoria</option>
-                            <option value="Licenciatura / Trunca">Licenciatura</option>
+                            <option value="" disabled selected>Selecciona tu nivel de estudios</option>
+                            <option value="Secundaria Completa">Secundaria Completa</option>
+                            <option value="Preparatoria / Bachillerato">Preparatoria / Bachillerato</option>
+                            <option value="Licenciatura / Trunca">Licenciatura / Trunca</option>
                         </select>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label><i class="fa-solid fa-briefcase"></i> Experiencia Previa en Seguridad *</label>
-                    <textarea id="job_experience" rows="3" placeholder="Menciona si has trabajado como guardia, empresas anteriores o años de experiencia..." required></textarea>
-                </div>
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-briefcase" style="color: var(--accent);"></i> Experiencia Previa en Seguridad *</label>
+                        <textarea id="job_experience" rows="3" placeholder="Detalla si has sido guardia anteriormente, empresas o años en el ramo..." required></textarea>
+                    </div>
 
-                <div class="form-group">
-                    <label><i class="fa-solid fa-file-pdf"></i> Adjuntar CV o Solicitud de Empleo (Opcional)</label>
-                    <input type="file" id="job_file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg">
-                    <small style="color: var(--gray); font-size: 0.85rem; display: block; margin-top: 0.3rem;">
-                        <i class="fa-solid fa-circle-info"></i> Puedes adjuntar tu archivo aquí y se enviará la ficha técnica completa a nuestro equipo.
-                    </small>
-                </div>
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-file-pdf" style="color: var(--accent);"></i> Adjuntar CV o Solicitud de Empleo (Opcional)</label>
+                        <div class="file-upload-wrapper">
+                            <i class="fa-solid fa-cloud-arrow-up" style="font-size: 1.8rem; color: var(--accent); margin-bottom: 0.3rem;"></i>
+                            <p style="font-size: 0.95rem; font-weight: 700; color: var(--primary);" id="fileNameText">Haz clic para adjuntar tu archivo</p>
+                            <span style="font-size: 0.8rem; color: var(--gray);">Formato PDF, DOC, JPG o PNG</span>
+                            <input type="file" id="job_file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" onchange="updateFileName(this)">
+                        </div>
+                    </div>
 
-                <button type="button" onclick="sendJobApplication()" class="btn-primary btn-whatsapp" style="width: 100%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1.5rem; padding: 1rem;">
-                    <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i> Enviar Postulación por WhatsApp
-                </button>
-            </form>
+                    <button type="button" onclick="sendJobApplication()" class="btn-primary btn-whatsapp" style="width: 100%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.6rem; margin-top: 1.2rem; padding: 1.1rem; border-radius: 8px; font-size: 1.05rem;">
+                        <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i> Enviar Postulación por WhatsApp
+                    </button>
+                </form>
+            </div>
         </div>
     </section>
 
@@ -788,7 +891,7 @@
 
     <!-- Scripts de Funcionalidad -->
     <script>
-        // Función para desplazamiento limpio sin fragmento # en la URL
+        // Desplazamiento limpio sin # en la URL
         function scrollToSection(sectionId) {
             const section = document.getElementById(sectionId);
             if (section) {
@@ -796,7 +899,37 @@
             }
         }
 
-        // Función para enviar datos de Cotización por WhatsApp
+        // Abrir/Cerrar el formulario de empleo
+        function toggleJobForm(forceOpen = false) {
+            const collapsible = document.getElementById('jobCollapsible');
+            const btn = document.getElementById('jobToggleBtn');
+            const btnText = document.getElementById('toggleBtnText');
+            const section = document.getElementById('empleo');
+
+            if (forceOpen || !collapsible.classList.contains('open')) {
+                collapsible.classList.add('open');
+                btn.classList.add('active');
+                btnText.textContent = "Ocultar Formulario";
+                if (forceOpen) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+            } else {
+                collapsible.classList.remove('open');
+                btn.classList.remove('active');
+                btnText.textContent = "Llenar Ficha de Postulación";
+            }
+        }
+
+        // Mostrar nombre del archivo seleccionado
+        function updateFileName(input) {
+            const fileNameText = document.getElementById('fileNameText');
+            if (input.files && input.files[0]) {
+                fileNameText.textContent = `Archivo: ${input.files[0].name}`;
+                fileNameText.style.color = '#25D366';
+            }
+        }
+
+        // Envío de Cotización por WhatsApp
         function sendToWhatsApp() {
             const phone = "526147641470";
             const name = document.getElementById("wa_name").value.trim();
@@ -816,7 +949,7 @@
             window.open(url, '_blank');
         }
 
-        // Función para enviar Solicitud de Empleo por WhatsApp
+        // Envío de Postulación por WhatsApp
         function sendJobApplication() {
             const phone = "526147641470";
             const name = document.getElementById("job_name").value.trim();
@@ -832,7 +965,6 @@
                 return;
             }
 
-            // Construcción estructurada de la solicitud
             const text = `📋 *NUEVA POSTULACIÓN PARA GUARDIA DE SEGURIDAD*\n\n` +
                          `👤 *Nombre:* ${name}\n` +
                          `🎂 *Edad:* ${age} años\n` +
@@ -874,7 +1006,6 @@
             updateCarousel();
         }
 
-        // Cambio automático cada 6 segundos
         setInterval(() => {
             moveCarousel(1);
         }, 6000);
