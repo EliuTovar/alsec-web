@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Almenara Seguridad</title>
+    <title>Almenara Seguridad | Bolsa de Trabajo y Cotizaciones</title>
     <!-- Favicon / Icono de Pestaña -->
     <link rel="icon" type="image/png" href="images/favicon.png">
     <!-- FontAwesome para Iconos -->
@@ -73,8 +73,9 @@
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
@@ -146,6 +147,7 @@
             display: flex;
             gap: 1rem;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         .btn-primary {
@@ -163,6 +165,23 @@
         .btn-primary:hover {
             background: #b08d49;
             transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 0.85rem 1.8rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: white;
         }
 
         /* Stats Section */
@@ -387,7 +406,7 @@
             color: var(--primary);
         }
 
-        .form-group input, .form-group textarea {
+        .form-group input, .form-group textarea, .form-group select {
             width: 100%;
             padding: 0.8rem;
             border: 1px solid #CBD5E1;
@@ -395,7 +414,7 @@
             outline: none;
         }
 
-        .form-group input:focus, .form-group textarea:focus {
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
             border-color: var(--primary);
         }
 
@@ -410,7 +429,29 @@
             transform: translateY(-2px);
         }
 
-        /* 4. Sobre Almenara Seguridad (Al final) */
+        /* 4. NUEVA SECCIÓN: RECLUTAMIENTO / BOLSA DE TRABAJO */
+        .careers {
+            padding: 5rem 2rem;
+            background: #FFFFFF;
+        }
+
+        .careers-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 10px 40px rgba(11, 48, 88, 0.1);
+            border-radius: 12px;
+            border-top: 5px solid var(--accent);
+            padding: 3.5rem 2.5rem;
+        }
+
+        .form-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        /* 5. Sobre Almenara Seguridad (Al final) */
         .about {
             padding: 5rem 2rem;
             max-width: 1200px;
@@ -470,6 +511,7 @@
             .hero h1 { font-size: 2.2rem; }
             .about { grid-template-columns: 1fr; }
             .contact-container { grid-template-columns: 1fr; }
+            .form-grid-2 { grid-template-columns: 1fr; }
             .nav-links { display: none; }
             .carousel-btn { width: 40px; height: 40px; }
             .prev-btn { left: 5px; }
@@ -490,7 +532,8 @@
             <ul class="nav-links">
                 <li><a href="javascript:void(0)" onclick="scrollToSection('inicio')">Inicio</a></li>
                 <li><a href="javascript:void(0)" onclick="scrollToSection('servicios')">Servicios</a></li>
-                <li><a href="javascript:void(0)" onclick="scrollToSection('contacto')" class="btn-contact">Contacto</a></li>
+                <li><a href="javascript:void(0)" onclick="scrollToSection('contacto')" class="btn-contact">Cotizar Servicio</a></li>
+                <li><a href="javascript:void(0)" onclick="scrollToSection('empleo')"><i class="fa-solid fa-user-check"></i> Bolsa de Trabajo</a></li>
                 <li><a href="javascript:void(0)" onclick="scrollToSection('nosotros')">Nosotros</a></li>
             </ul>
         </nav>
@@ -504,6 +547,7 @@
             <p>Más de 10 años de experiencia brindando protección y orden integral a empresas, industrias y dependencias públicas en todo el estado de Chihuahua.</p>
             <div class="hero-btns">
                 <a href="javascript:void(0)" onclick="scrollToSection('contacto')" class="btn-primary">Cotizar Servicio</a>
+                <a href="javascript:void(0)" onclick="scrollToSection('empleo')" class="btn-secondary"><i class="fa-solid fa-id-card"></i> Trabaja con Nosotros</a>
             </div>
         </div>
     </section>
@@ -611,7 +655,7 @@
     <section class="contact" id="contacto">
         <div class="contact-container">
             <div class="contact-info">
-                <h2>Contáctanos</h2>
+                <h2>Contáctanos para Cotizar</h2>
                 <p style="margin-bottom: 2rem; color: #E2E8F0;">Estamos listos para atender las necesidades de protección de tu empresa o institución.</p>
                 <div class="info-item">
                     <i class="fa-solid fa-phone"></i>
@@ -649,13 +693,79 @@
                     <textarea id="wa_message" rows="4" placeholder="¿En qué servicio estás interesado?" required></textarea>
                 </div>
                 <button type="button" onclick="sendToWhatsApp()" class="btn-primary btn-whatsapp" style="width: 100%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
-                    <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> Enviar por WhatsApp
+                    <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> Enviar Cotización por WhatsApp
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- 4. SECCIÓN SOBRE ALMENARA SEGURIDAD -->
+    <!-- 4. SECCIÓN DE CONTRATACIÓN Y BOLSA DE TRABAJO -->
+    <section class="careers" id="empleo">
+        <div class="careers-container">
+            <div class="section-header" style="margin-bottom: 2.5rem;">
+                <h2>Únete a Nuestro Equipo de Guardias</h2>
+                <p>En Almenara Seguridad buscamos personal comprometido. Completa tus datos para iniciar tu proceso de selección.</p>
+            </div>
+
+            <form id="jobForm">
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-user"></i> Nombre Completo *</label>
+                        <input type="text" id="job_name" placeholder="Tu nombre completo" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-cake-candles"></i> Edad *</label>
+                        <input type="number" id="job_age" placeholder="Ej. 30" min="18" max="65" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-phone"></i> Número de Teléfono *</label>
+                        <input type="tel" id="job_phone" placeholder="6141234567" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-location-dot"></i> Ubicación / Colonia *</label>
+                        <input type="text" id="job_location" placeholder="Colonia o municipio en Chihuahua" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-envelope"></i> Correo Electrónico</label>
+                        <input type="email" id="job_email" placeholder="correo@ejemplo.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fa-solid fa-graduation-cap"></i> Escolaridad *</label>
+                        <select id="job_education" required>
+                            <option value="" disabled selected>Selecciona una opción</option>
+                            <option value="Secundaria Completa">Secundaria</option>
+                            <option value="Preparatoria / Bachillerato">Preparatoria</option>
+                            <option value="Licenciatura / Trunca">Licenciatura</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa-solid fa-briefcase"></i> Experiencia Previa en Seguridad *</label>
+                    <textarea id="job_experience" rows="3" placeholder="Menciona si has trabajado como guardia, empresas anteriores o años de experiencia..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa-solid fa-file-pdf"></i> Adjuntar CV o Solicitud de Empleo (Opcional)</label>
+                    <input type="file" id="job_file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg">
+                    <small style="color: var(--gray); font-size: 0.85rem; display: block; margin-top: 0.3rem;">
+                        <i class="fa-solid fa-circle-info"></i> Puedes adjuntar tu archivo aquí y se enviará la ficha técnica completa a nuestro equipo.
+                    </small>
+                </div>
+
+                <button type="button" onclick="sendJobApplication()" class="btn-primary btn-whatsapp" style="width: 100%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1.5rem; padding: 1rem;">
+                    <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i> Enviar Postulación por WhatsApp
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 5. SECCIÓN SOBRE ALMENARA SEGURIDAD -->
     <section class="about" id="nosotros">
         <div class="about-text">
             <h2>Sobre Almenara Seguridad</h2>
@@ -686,7 +796,7 @@
             }
         }
 
-        // Función para enviar datos directamente al WhatsApp de Almenara
+        // Función para enviar datos de Cotización por WhatsApp
         function sendToWhatsApp() {
             const phone = "526147641470";
             const name = document.getElementById("wa_name").value.trim();
@@ -700,7 +810,38 @@
 
             const text = `Hola, mi nombre es *${name}*.\n` +
                          (email ? `Correo: ${email}\n` : '') +
-                         `*Requerimiento:* ${message}`;
+                         `*Requerimiento de Cotización:* ${message}`;
+
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
+        }
+
+        // Función para enviar Solicitud de Empleo por WhatsApp
+        function sendJobApplication() {
+            const phone = "526147641470";
+            const name = document.getElementById("job_name").value.trim();
+            const age = document.getElementById("job_age").value.trim();
+            const jobPhone = document.getElementById("job_phone").value.trim();
+            const location = document.getElementById("job_location").value.trim();
+            const email = document.getElementById("job_email").value.trim();
+            const education = document.getElementById("job_education").value;
+            const experience = document.getElementById("job_experience").value.trim();
+
+            if (!name || !age || !jobPhone || !location || !education || !experience) {
+                alert("Por favor completa los campos obligatorios del formulario de empleo.");
+                return;
+            }
+
+            // Construcción estructurada de la solicitud
+            const text = `📋 *NUEVA POSTULACIÓN PARA GUARDIA DE SEGURIDAD*\n\n` +
+                         `👤 *Nombre:* ${name}\n` +
+                         `🎂 *Edad:* ${age} años\n` +
+                         `📞 *Teléfono:* ${jobPhone}\n` +
+                         `📍 *Ubicación:* ${location}\n` +
+                         `🎓 *Escolaridad:* ${education}\n` +
+                         (email ? `✉️ *Correo:* ${email}\n` : '') +
+                         `💼 *Experiencia:* ${experience}\n\n` +
+                         `_Solicitud enviada desde alsec.mx_`;
 
             const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
             window.open(url, '_blank');
