@@ -102,7 +102,7 @@
             background: var(--accent) !important;
         }
 
-        /* Hero Section */
+        /* 1. Hero Section (Portada Principal) */
         .hero {
             background: linear-gradient(135deg, rgba(11, 48, 88, 0.95), rgba(11, 48, 88, 0.8)), url('https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1920&q=80') center/cover;
             color: white;
@@ -157,6 +157,7 @@
             font-weight: 700;
             transition: transform 0.2s, background 0.3s;
             cursor: pointer;
+            display: inline-block;
         }
 
         .btn-primary:hover {
@@ -191,62 +192,16 @@
             font-weight: 600;
         }
 
-        /* About Section */
-        .about {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text h2 {
-            font-size: 2.2rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
-
-        .about-text p {
-            margin-bottom: 1rem;
-            color: var(--gray);
-        }
-
-        .about-highlight {
-            border-left: 4px solid var(--accent);
-            padding-left: 1rem;
-            margin: 1.5rem 0;
-            font-style: italic;
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .about-card {
-            background: var(--primary);
-            color: white;
-            padding: 3rem;
-            border-radius: 12px;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(11, 48, 88, 0.2);
-        }
-
-        .about-card h3 {
-            color: var(--accent);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        /* Services Section */
+        /* 2. Servicios en Carrusel Interactivo */
         .services {
-            background: var(--light);
+            background: #FFFFFF;
             padding: 5rem 2rem;
         }
 
         .section-header {
             text-align: center;
             max-width: 700px;
-            margin: 0 auto 3.5rem auto;
+            margin: 0 auto 3rem auto;
         }
 
         .section-header h2 {
@@ -259,53 +214,128 @@
             color: var(--gray);
         }
 
-        .services-grid {
-            max-width: 1200px;
+        .carousel-container {
+            max-width: 950px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2rem;
+            position: relative;
         }
 
-        .service-card {
-            background: white;
-            padding: 2.5rem 1.8rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-top: 4px solid var(--primary);
+        .carousel-track-container {
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(11, 48, 88, 0.15);
+            border-top: 5px solid var(--accent);
         }
 
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            border-top-color: var(--accent);
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
         }
 
-        .service-icon {
+        .carousel-slide {
+            min-width: 100%;
+            position: relative;
+            height: 420px;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(11, 48, 88, 0.2) 0%, rgba(11, 48, 88, 0.92) 80%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2.5rem;
+            color: white;
+        }
+
+        .slide-icon {
             font-size: 2.5rem;
             color: var(--accent);
-            margin-bottom: 1.2rem;
-        }
-
-        .service-card h3 {
-            color: var(--primary);
             margin-bottom: 0.8rem;
         }
 
-        .service-card p {
-            color: var(--gray);
-            font-size: 0.95rem;
+        .slide-overlay h3 {
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 0.5rem;
         }
 
-        /* Contact Section */
+        .slide-overlay p {
+            font-size: 1.05rem;
+            color: #E2E8F0;
+            max-width: 750px;
+            margin-bottom: 1rem;
+        }
+
+        /* Botones laterales del carrusel */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(11, 48, 88, 0.9);
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .carousel-btn:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev-btn { left: -22px; }
+        .next-btn { right: -22px; }
+
+        /* Puntos Indicadores */
+        .carousel-dots {
+            text-align: center;
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: #CBD5E1;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background: var(--accent);
+            width: 30px;
+            border-radius: 10px;
+        }
+
+        /* 3. Contacto y Cotizar Servicio */
         .contact {
             padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            background: var(--light);
         }
 
         .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
@@ -380,6 +410,52 @@
             transform: translateY(-2px);
         }
 
+        /* 4. Sobre Almenara Seguridad (Al final) */
+        .about {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: var(--gray);
+        }
+
+        .about-highlight {
+            border-left: 4px solid var(--accent);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .about-card {
+            background: var(--primary);
+            color: white;
+            padding: 3rem;
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(11, 48, 88, 0.2);
+        }
+
+        .about-card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
         /* Footer */
         footer {
             background: var(--dark);
@@ -395,6 +471,11 @@
             .about { grid-template-columns: 1fr; }
             .contact-container { grid-template-columns: 1fr; }
             .nav-links { display: none; }
+            .carousel-btn { width: 40px; height: 40px; }
+            .prev-btn { left: 5px; }
+            .next-btn { right: 5px; }
+            .carousel-slide { height: 480px; }
+            .slide-overlay { padding: 1.5rem; }
         }
     </style>
 </head>
@@ -408,14 +489,14 @@
             </a>
             <ul class="nav-links">
                 <li><a href="javascript:void(0)" onclick="scrollToSection('inicio')">Inicio</a></li>
-                <li><a href="javascript:void(0)" onclick="scrollToSection('nosotros')">Nosotros</a></li>
                 <li><a href="javascript:void(0)" onclick="scrollToSection('servicios')">Servicios</a></li>
                 <li><a href="javascript:void(0)" onclick="scrollToSection('contacto')" class="btn-contact">Contacto</a></li>
+                <li><a href="javascript:void(0)" onclick="scrollToSection('nosotros')">Nosotros</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero / Portada Principal -->
+    <!-- 1. SECCIÓN DE INICIO / PORTADA PRINCIPAL -->
     <section class="hero" id="inicio">
         <div class="hero-content">
             <span class="hero-badge"><i class="fa-solid fa-shield-halved"></i> Empresa Orgullosamente Chihuahuense</span>
@@ -449,53 +530,84 @@
         </div>
     </section>
 
-    <!-- Nosotros -->
-    <section class="about" id="nosotros">
-        <div class="about-text">
-            <h2>Sobre Almenara Seguridad</h2>
-            <p>Somos una empresa especializada en seguridad privada dedicada a mantener la tranquilidad y el orden operacional de nuestros clientes.</p>
-            <p>Nos destacamos por ser una institución centrada en la profesionalidad, la integridad y el desarrollo constante y bienestar de todo nuestro personal activo.</p>
-            <div class="about-highlight">
-                "Presencia estratégica y confiable en todo el Estado de Chihuahua."
-            </div>
-        </div>
-        <div class="about-card">
-            <h3>Compromiso Institucional</h3>
-            <p>Ajustamos cada esquema de protección a las necesidades físicas, digitales y operacionales de nuestros clientes, garantizando una respuesta inmediata y efectiva.</p>
-        </div>
-    </section>
-
-    <!-- Servicios -->
+    <!-- 2. SECCIÓN DE SERVICIOS EN CARRUSEL INTERACTIVO -->
     <section class="services" id="servicios">
         <div class="section-header">
             <h2>Nuestros Servicios</h2>
             <p>Soluciones de vigilancia integrales diseñadas para el sector industrial, comercial y gubernamental.</p>
         </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fa-solid fa-industry service-icon"></i>
-                <h3>Seguridad Industrial</h3>
-                <p>Protección especializada para parques y naves industriales, atendiendo la industria nacional y maquiladora con protocolos rigurosos.</p>
+
+        <div class="carousel-container">
+            <button class="carousel-btn prev-btn" onclick="moveCarousel(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="carousel-btn next-btn" onclick="moveCarousel(1)"><i class="fa-solid fa-chevron-right"></i></button>
+
+            <div class="carousel-track-container">
+                <div class="carousel-track" id="carouselTrack">
+                    <!-- Slide 1: Seguridad Industrial -->
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80" alt="Seguridad Industrial">
+                        <div class="slide-overlay">
+                            <i class="fa-solid fa-industry slide-icon"></i>
+                            <h3>Seguridad Industrial</h3>
+                            <p>Protección especializada para parques y naves industriales, atendiendo la industria nacional y maquiladora con protocolos rigurosos.</p>
+                            <div>
+                                <a href="javascript:void(0)" onclick="scrollToSection('contacto')" class="btn-primary" style="font-size: 0.85rem; padding: 0.5rem 1.2rem;">Cotizar este servicio</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2: Iniciativa Privada -->
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80" alt="Iniciativa Privada">
+                        <div class="slide-overlay">
+                            <i class="fa-solid fa-building-user slide-icon"></i>
+                            <h3>Iniciativa Privada</h3>
+                            <p>Vigilancia en centros comerciales, oficinas, desarrollos residenciales, hoteles y custodia operativa de bodegas.</p>
+                            <div>
+                                <a href="javascript:void(0)" onclick="scrollToSection('contacto')" class="btn-primary" style="font-size: 0.85rem; padding: 0.5rem 1.2rem;">Cotizar este servicio</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3: Servicios al Gobierno -->
+                    <div class="carousel-slide">
+                        <img src="https://images.pexels.com/photos/1010079/pexels-photo-1010079.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Servicios al Gobierno">
+                        <div class="slide-overlay">
+                            <i class="fa-solid fa-landmark slide-icon"></i>
+                            <h3>Servicios al Gobierno</h3>
+                            <p>Vigilancia y custodia para dependencias públicas con elementos altamente capacitados y con licencias oficiales vigentes.</p>
+                            <div>
+                                <a href="javascript:void(0)" onclick="scrollToSection('contacto')" class="btn-primary" style="font-size: 0.85rem; padding: 0.5rem 1.2rem;">Cotizar este servicio</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4: Seguridad Corporativa -->
+                    <div class="carousel-slide">
+                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80" alt="Seguridad Corporativa">
+                        <div class="slide-overlay">
+                            <i class="fa-solid fa-shield-cat slide-icon"></i>
+                            <h3>Seguridad Corporativa</h3>
+                            <p>Estrategias avanzadas de control de acceso, resguardo de activos y protección patrimonial para edificios corporativos.</p>
+                            <div>
+                                <a href="javascript:void(0)" onclick="scrollToSection('contacto')" class="btn-primary" style="font-size: 0.85rem; padding: 0.5rem 1.2rem;">Cotizar este servicio</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="service-card">
-                <i class="fa-solid fa-building-user service-icon"></i>
-                <h3>Iniciativa Privada</h3>
-                <p>Vigilancia en centros comerciales, oficinas, desarrollos residenciales, hoteles y custodia operativa de bodegas.</p>
-            </div>
-            <div class="service-card">
-                <i class="fa-solid fa-landmark service-icon"></i>
-                <h3>Servicios al Gobierno</h3>
-                <p>Vigilancia y custodia para dependencias públicas con elementos altamente capacitados y con licencias oficiales vigentes.</p>
-            </div>
-            <div class="service-card">
-                <i class="fa-solid fa-shield-cat service-icon"></i>
-                <h3>Seguridad Corporativa</h3>
-                <p>Estrategias avanzadas de control de acceso, resguardo de activos y protección patrimonial para edificios corporativos.</p>
+
+            <!-- Indicadores (Puntos) -->
+            <div class="carousel-dots">
+                <span class="dot active" onclick="currentSlide(0)"></span>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
             </div>
         </div>
     </section>
 
-    <!-- Contacto con integración de WhatsApp -->
+    <!-- 3. SECCIÓN DE INFORMACIÓN Y COTIZAR SERVICIO (CONTACTO) -->
     <section class="contact" id="contacto">
         <div class="contact-container">
             <div class="contact-info">
@@ -543,6 +655,22 @@
         </div>
     </section>
 
+    <!-- 4. SECCIÓN SOBRE ALMENARA SEGURIDAD -->
+    <section class="about" id="nosotros">
+        <div class="about-text">
+            <h2>Sobre Almenara Seguridad</h2>
+            <p>Somos una empresa especializada en seguridad privada dedicada a mantener la tranquilidad y el orden operacional de nuestros clientes.</p>
+            <p>Nos destacamos por ser una institución centrada en la profesionalidad, la integridad y el desarrollo constante y bienestar de todo nuestro personal activo.</p>
+            <div class="about-highlight">
+                "Presencia estratégica y confiable en todo el Estado de Chihuahua."
+            </div>
+        </div>
+        <div class="about-card">
+            <h3>Compromiso Institucional</h3>
+            <p>Ajustamos cada esquema de protección a las necesidades físicas, digitales y operacionales de nuestros clientes, garantizando una respuesta inmediata y efectiva.</p>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 Almenara Seguridad (alsec.mx) - Todos los derechos reservados.</p>
@@ -577,6 +705,38 @@
             const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
             window.open(url, '_blank');
         }
+
+        // Lógica del Carrusel de Servicios
+        let slideIndex = 0;
+
+        function updateCarousel() {
+            const track = document.getElementById('carouselTrack');
+            const dots = document.querySelectorAll('.dot');
+            
+            if (track) {
+                track.style.transform = `translateX(-${slideIndex * 100}%)`;
+            }
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === slideIndex);
+            });
+        }
+
+        function moveCarousel(direction) {
+            const totalSlides = document.querySelectorAll('.carousel-slide').length;
+            slideIndex = (slideIndex + direction + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        function currentSlide(index) {
+            slideIndex = index;
+            updateCarousel();
+        }
+
+        // Cambio automático cada 6 segundos
+        setInterval(() => {
+            moveCarousel(1);
+        }, 6000);
     </script>
 
 </body>
